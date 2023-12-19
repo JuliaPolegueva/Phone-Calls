@@ -1,0 +1,52 @@
+@import '../../styles/variables.scss';
+
+.calls {
+  //display: flex;
+  //justify-content: space-between;
+
+  display: grid;
+  grid-template-columns:
+    minmax(max-content, 54px) minmax(max-content, 88px) minmax(max-content, 129px)
+    minmax(min-content, 325px) minmax(max-content, 214px) minmax(max-content, 130px) auto;
+
+  font-family: $font-family;
+  color: $hover-text;
+  font-size: 15px;
+  line-height: 140%;
+}
+
+.info {
+  display: flex;
+}
+
+.info:last-child {
+  justify-content: end;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white-color;
+
+  font-family: $font-family;
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0.224px;
+  color: $active-color;
+
+  &__def {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+
+  .tel{
+    color: $gray-text;
+  }
+}

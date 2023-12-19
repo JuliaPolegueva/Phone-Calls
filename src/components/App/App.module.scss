@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.container {
+  max-width: 1440px;
+  height: 500px;
+  background-color: rebeccapurple;
+  margin: 80px auto 120px auto;
+}
+
+.basic_filters{
+  display: flex;
+  justify-content: space-between;
+  height: 24px;
+  font-family: $font-family;
+}

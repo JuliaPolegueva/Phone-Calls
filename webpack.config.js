@@ -15,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(tsx)$/,
+        test: /\.ts|\.tsx$/,
         exclude: /node_modules/,
         use: ['ts-loader'],
       },
@@ -38,7 +38,7 @@ module.exports = {
         },
       },
       {
-        test: /\.module.(scss|css)$/i,
+        test: /\.(scss|css)$/i,
         use: [
           production ? MiniCssExtractPlugin.loader : 'style-loader',
           {
@@ -48,6 +48,7 @@ module.exports = {
               sourceMap: !production,
             },
           },
+          'postcss-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -55,12 +56,6 @@ module.exports = {
             },
           },
         ],
-      },
-      {
-        test: /\.(scss|css)$/i,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
-        use: [production ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },

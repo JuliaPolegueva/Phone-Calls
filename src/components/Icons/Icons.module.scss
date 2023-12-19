@@ -1,0 +1,49 @@
+@import '../../styles/variables.scss';
+
+svg {
+  &:hover {
+    path {
+      fill: $active-color;
+      transition: 0.3s;
+    }
+  }
+  &:active {
+    path {
+      fill: $active-color;
+    }
+  }
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.arrowLeft {
+  transform: rotate(90deg);
+}
+
+.arrowRight {
+  transform: rotate(-90deg);
+}
+
+.inErr {
+  path {
+    fill: #ea1a4f;
+  }
+}
+
+.outOk {
+  transform: rotate(180deg);
+
+  path {
+    fill: #28a879;
+  }
+}
+
+.outErr {
+  transform: rotate(180deg);
+
+  path {
+    fill: #ea1a4f;
+  }
+}

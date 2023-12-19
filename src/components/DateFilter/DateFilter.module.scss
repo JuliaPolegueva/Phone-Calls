@@ -1,0 +1,122 @@
+@import '../../styles/variables.scss';
+
+.container{
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn {
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin: 0 12px;
+  background-color: transparent;
+  border: 0;
+
+  font-family: $font-family;
+  font-size: 14px;
+  line-height: 16px;
+  color: $active-color;
+
+  &:hover {
+    svg path {
+      transition: 0.3s;
+      fill: $active-color;
+    }
+  }
+
+  & svg{
+    margin-right: 8px;
+  }
+}
+
+.panel {
+  position: absolute;
+  top: 35px;
+  right: 0px;
+  width: 204px;
+  height: 239px;
+  background-color: $white-color;
+  border: 1px solid $white-color;
+  box-shadow: 0px 0px 26px rgba(233, 237, 243, 0.8);
+  border-radius: 4px;
+  z-index: 2;
+  overflow: hidden;
+
+  font-family: $font-family;
+  font-size: 14px;
+  line-height: 28px;
+  color: $light-gray-text;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  height: 40px;
+  padding: 6px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+    color: $hover-text;
+  }
+
+  &--active {
+    color: $active-color;
+  }
+}
+
+.interval {
+  color: $hover-text;
+  padding: 6px 20px 20px;
+  cursor: default;
+
+  &__title,
+  &__date {
+    display: flex;
+    align-items: center;
+    color: $hover-text;
+  }
+
+  &__date {
+    color: $svg-color;
+  }
+}
+
+.input {
+  width: 57px;
+  border: none;
+  color: $svg-color;
+  font-size: 13px;
+
+  &::placeholder {
+    color: $svg-color;
+    font-size: 16px;
+  }
+
+  &__end {
+    margin-right: 20px;
+  }
+
+  &__btn {
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+}

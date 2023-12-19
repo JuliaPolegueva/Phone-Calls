@@ -1,8 +1,27 @@
+@import 'normalize.css';
+@import './styles/variables.scss';
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+
+  &::before,
+  ::after {
+    box-sizing: inherit;
+  }
+}
+
 body {
   overflow-x: hidden;
 }
 
-p, ul, h1 {
+p,
+ul,
+h1 {
   margin: 0;
   padding: 0;
 }
