@@ -1,47 +1,43 @@
 @import '../../styles/variables.scss';
 
 .wrapper {
-  padding: 0 20px 0 40px;
-
-  //height: 48px;
-  //display: flex;
-  //justify-content: space-between;
-  //align-items: center;
+  padding: 24px 40px 0;
 }
 
 .filters {
-  display: grid;
-  grid-template-columns:
-    minmax(max-content, 54px) minmax(max-content, 88px) minmax(max-content, 129px)
-    minmax(max-content, 325px) minmax(max-content, 214px) minmax(max-content, 130px) auto;
-  //position: relative;
-  //right: -2px;
-  //padding: 0;
-  //margin: 0;
-  //list-style-type: none;
-
-  //display: flex;
-  //justify-content: space-between;
-  //margin-bottom: 20px;
-
-  //align-items: center;
+  display: flex;
+  margin-bottom: 20px;
 }
+
 .filter {
-
-
-  //width: 200px;
-
-  //display: flex;
-  //align-items: center;
-  //margin-left: 30px;
-  //position: relative;
-
-  /*&:first-child{
-    margin-left: 0;
-  }*/
-}
-
-.filter:last-child {
-    justify-content: end;
+  &__type {
+    width: 54px;
   }
 
+  &__time {
+    width: 88px;
+  }
+
+  &__avatar {
+    width: 129px;
+  }
+
+  &__tel {
+    width: 325px;
+    flex-shrink: 2;
+  }
+
+  &__source {
+    width: 214px;
+  }
+
+  &__rating {
+    width: 150px;
+  }
+
+  &__audio{
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+}

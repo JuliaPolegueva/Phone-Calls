@@ -36,8 +36,8 @@ export interface ICall {
         from_support: number;
         support_read_status: number;
         person_read_status: number;
-      }
-    ]
+      },
+    ];
   };
   contact_name: string;
   contact_company: string;
@@ -45,14 +45,29 @@ export interface ICall {
   person_name: string;
   person_surname: string;
   person_avatar: string;
-};
+}
 
 export interface ICalls {
   total_rows: string;
   results: ICall[];
-};
+}
 
-export interface IAudio {
+export interface IAudioProps {
   record: string;
   partnership_id: string;
-};
+}
+
+export interface ICallsProps {
+  dates: {
+    startDate: string;
+    endDate: string;
+  };
+}
+
+export interface IFilterProps {
+  dates: {
+    startDate: string;
+    endDate: string;
+  };
+  sortType: string;
+}

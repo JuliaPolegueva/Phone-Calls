@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IAudio, ICalls } from '../../types/call.types';
+import { IAudioProps, ICalls, ICallsProps, IFilterProps } from '../../types/call.types';
 
 export const callsAPI = createApi({
   reducerPath: 'callsAPI',
@@ -12,14 +12,14 @@ export const callsAPI = createApi({
   }),
   tagTypes: ['Calls'],
   endpoints: build => ({
-    getCalls: build.query<ICalls, void>({
-      query: () => ({
-        url: `getList`,
+    getCalls: build.query<ICalls, ICallsProps>({
+      query: ({ dates }) => ({
+        url: `getList?date_start=${dates.startDate}&date_end=${dates.endDate}`,
         method: 'POST',
       }),
       providesTags: ['Calls'],
     }),
-    getAudio: build.query<any, IAudio>({
+    getAudio: build.query<any, IAudioProps>({
       query: ({ record, partnership_id }) => ({
         url: `getRecord?record=${record}&partnership_id=${partnership_id}`,
         method: 'POST',
@@ -28,18 +28,20 @@ export const callsAPI = createApi({
           'Content-Transfer-Encoding': 'binary',
           'Content-Disposition': `filename="record.mp3"`,
         },
-        responseHandler: (response) => {
-          console.log(response);
-          return response.blob()//.then((qwe) => {
-            //const asd = new Audio(URL.createObjectURL(qwe));
-            //const zxc = (URL.createObjectURL(qwe));
-            //return asd
-         //})
+        responseHandler: response => {
+          return response.blob();
         },
         providesTags: ['Calls'],
       }),
     }),
+    getSortCalls: build.query<ICalls, IFilterProps>({
+      query: ({ dates, sortType }) => ({
+        url: `getList?date_start=${dates.startDate}&date_end=${dates.endDate}&sort_by=${sortType}`,
+        method: 'POST',
+      }),
+      providesTags: ['Calls'],
+    }),
   }),
 });
 
-export const { useGetCallsQuery, useGetAudioQuery } = callsAPI;
+export const { useGetCallsQuery, useGetAudioQuery, useGetSortCallsQuery } = callsAPI;

@@ -11,7 +11,6 @@
   height: 96px;
   width: 133px;
   overflow: hidden;
-
 }
 
 .list {
@@ -63,10 +62,10 @@
   }
 
   &--active {
-    color: $hover-text;
+    color: $active-color;
   
     svg path {
-      fill: $active-color;
+      fill: $svg-color;
     }
   }
 }
@@ -79,6 +78,21 @@
     &:hover {
       color: $gray-text;;
     }
-  
   }
+
+  &__type{
+    display: flex;   
+  }
+}
+
+.reset-filters {
+  color: $gray-text;
+  font-size: 14px;
+  line-height: 148%;
+  font-family: $font-family;
+  margin-left: 10px;
+}
+
+.reset-filters span {
+  margin-right: 5px;
 }

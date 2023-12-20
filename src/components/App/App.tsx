@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-//import PhoneList
 import styles from './App.module.scss';
 
 import GlobalRilters from '../GlobalFilters/GlobalFilters';
@@ -10,7 +9,6 @@ const App: FC = () => {
     <div className={styles.container}>
       <GlobalRilters />
       <PhoneList />
-      <main className="main">gtgtgtgtgt</main>
     </div>
   );
 };

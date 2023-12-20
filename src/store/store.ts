@@ -1,15 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import fetchCalls from './calls/calls.actions';
+import filterDateSlice from './date/date.slice';
 import { callsAPI } from './api/calls.api';
+import filterCallsSlice from './filters/filters.slice';
 
 export const store = configureStore({
   reducer: {
-    calls: fetchCalls,
+    filterDate: filterDateSlice,
+    filterCalls: filterCallsSlice,
     [callsAPI.reducerPath]: callsAPI.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({serializableCheck:false}).concat(callsAPI.middleware),
+  middleware: getDefaultMiddleware => {
+    return getDefaultMiddleware({ serializableCheck: false }).concat(callsAPI.middleware);
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;

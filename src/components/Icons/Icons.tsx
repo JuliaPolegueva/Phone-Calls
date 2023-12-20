@@ -78,6 +78,17 @@ const Icons: FC<IconsProps> = ({ name, direction }: IconsProps) => {
       </svg>
     );
 
+  if (name === 'reset')
+    return (
+      <svg className={styles.reset} width="9" height="9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M8.875 1.00625L7.99375 0.125L4.5 3.61875L1.00625 0.125L0.125 1.00625L3.61875 4.5L0.125 7.99375L1.00625 
+          8.875L4.5 5.38125L7.99375 8.875L8.875 7.99375L5.38125 4.5L8.875 1.00625Z"
+          fill="#ADBFDF"
+        />
+      </svg>
+    );
+
   return (
     <svg className={getStyles(name)} xmlns="http://www.w3.org/2000/svg" width="18" height="21" fill="none">
       <g id="dropdown">

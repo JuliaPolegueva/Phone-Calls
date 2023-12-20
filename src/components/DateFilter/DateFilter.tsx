@@ -1,26 +1,49 @@
 import React, { FC, useState } from 'react';
 
 import InputMask from 'react-input-mask';
-import calendar from '../../assets/images/calendar.svg';
 import styles from './DateFilter.module.scss';
 import classNames from 'classnames/bind';
 import Icons from '../Icons/Icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import {
+  setActiveFilter,
+  setBackDates,
+  setDefaultDates,
+  setForwardDates,
+  setUserDates,
+} from '../../store/date/date.slice';
 
-interface DateFilterProps {
-  name: string;
-  list: string[];
-}
+const DateFilter: FC = () => {
+  const dispatch = useDispatch();
+  const activeFilter = useSelector((state: RootState) => state.filterDate.activeFilter);
+  const dateList = useSelector((state: RootState) => state.filterDate.filters);
 
-const DateFilter: FC<DateFilterProps> = ({ name, list }: DateFilterProps) => {
-  const [activeName, setActiveName] = useState(name);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
   const onFilterCheck = (name: string) => {
-    if (name !== activeName) setActiveName(name);
+    if (name !== activeFilter) dispatch(setActiveFilter(name));
+    dispatch(setDefaultDates(name));
+    setIsOpen(false);
   };
 
   const onFilterClick = () => {
     setIsOpen(open => !open);
+  };
+
+  const handleBackClick = () => {
+    dispatch(setBackDates());
+  };
+
+  const handleForwardClick = () => {
+    dispatch(setForwardDates());
+  };
+
+  const onDateClick = () => {
+    dispatch(setActiveFilter(`${startDate} - ${endDate}`));
+    dispatch(setUserDates({ startDate, endDate }));
   };
 
   const cx = classNames.bind(styles);
@@ -28,14 +51,14 @@ const DateFilter: FC<DateFilterProps> = ({ name, list }: DateFilterProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <button className={styles.btn}>
+        <button className={styles.btn} onClick={handleBackClick}>
           <Icons name="arrow" direction="left" />
         </button>
         <button className={styles.title} onClick={() => onFilterClick()}>
           <Icons name="calendar" />
-          {activeName}
+          {activeFilter}
         </button>
-        <button className={styles.btn}>
+        <button className={styles.btn} onClick={handleForwardClick}>
           <Icons name="arrow" direction="right" />
         </button>
       </div>
@@ -43,11 +66,11 @@ const DateFilter: FC<DateFilterProps> = ({ name, list }: DateFilterProps) => {
       {isOpen && (
         <div className={styles.panel}>
           <ul className={styles.list}>
-            {list?.map(item => {
+            {dateList?.map(item => {
               return (
                 <li
                   key={item}
-                  className={cx('item', { 'item--active': activeName === item })}
+                  className={cx('item', { 'item--active': activeFilter === item })}
                   onClick={() => onFilterCheck(item)}
                 >
                   {item}
@@ -61,16 +84,18 @@ const DateFilter: FC<DateFilterProps> = ({ name, list }: DateFilterProps) => {
                   mask="99.99.99"
                   placeholder="__.__.__"
                   className={styles.input}
-                  //value={startDate}
+                  value={startDate}
+                  onChange={e => setStartDate(e.target.value)}
                 />
                 <span>-</span>
                 <InputMask
                   mask="99.99.99"
                   placeholder="__.__.__"
                   className={`${styles.input} ${styles['input__end']}`}
-                  /*value={endDate}*/
+                  value={endDate}
+                  onChange={e => setEndDate(e.target.value)}
                 />
-                <button className={styles['input__btn']}>
+                <button className={styles['input__btn']} onClick={onDateClick}>
                   <Icons name="calendar" />
                 </button>
               </div>
