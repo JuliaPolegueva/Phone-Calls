@@ -2,6 +2,10 @@
 
 ### Ссылка на проект: https://phone-calls-juliapolegueva.vercel.app/
 
+
+
+
+
 Макет:
 https://www.figma.com/file/IhcGwlOut5bg9d64xkDwBB/Test-task-for-the-developer?type=design&node-id=0-1&mode=design&t=5cW15ZlztzE36Ua7-0
 
